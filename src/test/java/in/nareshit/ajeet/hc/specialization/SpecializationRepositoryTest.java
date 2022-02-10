@@ -1,6 +1,7 @@
 package in.nareshit.ajeet.hc.specialization;
 
 import static org.assertj.core.api.Assertions.assertThat;
+//import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -30,13 +31,13 @@ public class SpecializationRepositoryTest {
 	/***
 	 * 1. Test Save Operation
 	 * ***/
-	@Disabled
+	
 	@Test
 	@Order(1)
 	public void testspecCreate() {
 		Specialization spec=new Specialization(null,"CRDLS","Cardiologists",
 				"They’re experts on the heart and blood vessels");
-		Specialization specOutput=repo.save(spec);
+		spec=repo.save(spec);
 		assertNotNull(spec.getId(),"Spec is not Created !!");
 		
 	}
@@ -49,8 +50,7 @@ public class SpecializationRepositoryTest {
 	public void testspecFetchAll() {
 		List<Specialization> list = repo.findAll();
 		assertNotNull(list);
-		if(list.isEmpty())
-		fail("No Data Exist in Database");
+		assertThat(list.size()>0);
 	}
 	
 	}
